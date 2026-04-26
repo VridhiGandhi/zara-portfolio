@@ -1,0 +1,1020 @@
+/* ============================================================
+   Zara Shaikh — Blush Rose & Lavender Theme
+   Pastel. Pink. Premium.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&display=swap');
+
+/* ---- TOKENS --------------------------------------------- */
+:root {
+  --ink: #1A0A14;
+  /* warm near-black, pink undertone */
+  --ink-light: #7C6B74;
+  /* muted mauve body text           */
+  --paper: #FFFFFF;
+  /* white                           */
+  --paper-2: #FFF5F9;
+  /* blush/rose page tint            */
+  --pink: #F43F8E;
+  /* hot rose — primary accent       */
+  --pink-soft: #FBA4C7;
+  /* pastel blush — lighter version  */
+  --lavender: #A78BFA;
+  /* soft lavender — accent 2       */
+  --peach: #FB923C;
+  /* warm peach — accent 3          */
+  --mint: #34D399;
+  /* mint green — skills/success     */
+  --plum: #120112;
+  /* deep premium plum — dark section bg     */
+  --border: rgba(244, 63, 142, 0.13);
+  --shadow-sm: 0 2px 12px rgba(26, 10, 20, 0.07);
+  --shadow-md: 0 8px 40px rgba(244, 63, 142, 0.13);
+  --rad: 16px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur: 0.3s;
+
+  /* Font stack */
+  --display: 'Bricolage Grotesque', sans-serif;
+  --body: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* ---- REVEAL ANIMATIONS ----------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 1.2s var(--ease), transform 1.2s var(--ease);
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.15s; }
+.reveal-delay-2 { transition-delay: 0.3s; }
+.reveal-delay-3 { transition-delay: 0.45s; }
+
+/* ---- GLOBAL RESET / BASE -------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Kill the template's default link coloring inside paragraphs */
+p a,
+p a:visited {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(244, 63, 142, 0.3);
+}
+
+/* ---- PRELOADER ------------------------------------------ */
+#preloader {
+  background: var(--paper-2);
+}
+
+#loader.dots-fade>div {
+  background: var(--pink);
+}
+
+/* ============================================================
+   HEADER — Frosted Nav
+   ============================================================ */
+
+/* Always frosted glass navbar */
+.s-header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  margin: 0 !important;
+  background: rgba(255, 245, 249, 0.85) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(244, 63, 142, 0.08) !important;
+  box-shadow: 0 1px 12px rgba(26, 10, 20, 0.03) !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  transition: background 0.4s var(--ease), box-shadow 0.4s var(--ease);
+  z-index: 100;
+}
+
+/* Slightly deeper shadow and opacity on scroll */
+.s-header.sticky {
+  background: rgba(255, 245, 249, 0.98) !important;
+  border-bottom: 1px solid rgba(244, 63, 142, 0.12) !important;
+  box-shadow: 0 4px 24px rgba(26, 10, 20, 0.07) !important;
+}
+
+/* Inner row — full width, flex, vertically centered */
+.s-header__inner {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: min(92%, 1280px) !important;
+  margin: 0 auto !important;
+  padding: 20px 0 !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Logo — left */
+.s-header__logo {
+  flex-shrink: 0;
+}
+
+.s-header__logo a,
+a.logo {
+  font-family: var(--display) !important;
+  font-weight: 800 !important;
+  font-size: 18px !important;
+  color: var(--ink) !important;
+  letter-spacing: -0.03em !important;
+  text-decoration: none !important;
+  line-height: 1 !important;
+  display: inline-block !important;
+}
+
+/* Nav — right */
+.s-header__nav {
+  display: flex;
+  align-items: center;
+}
+
+.s-header__menu-links {
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.s-header__menu-links a {
+  font-family: var(--body) !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  color: var(--ink-light) !important;
+  text-decoration: none !important;
+  padding: 8px 14px !important;
+  border-radius: 8px !important;
+  border: none !important;
+  transition: color 0.2s, background 0.2s !important;
+  display: inline-block !important;
+}
+
+.s-header__menu-links a:hover {
+  color: var(--ink) !important;
+  background: rgba(244, 63, 142, 0.06) !important;
+}
+
+/* Active state — rose color + bold */
+.s-header__menu-links li.current a {
+  color: var(--pink) !important;
+  font-weight: 700 !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Mobile toggle */
+.s-header__menu-toggle span {
+  background-color: var(--ink) !important;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .s-header__inner {
+    padding: 16px 0 !important;
+  }
+}
+
+
+
+/* ============================================================
+   INTRO / HERO
+   ============================================================ */
+.s-intro {
+  background: var(--paper-2);
+  min-height: 100vh;
+  position: relative;
+  border-bottom: 1px solid var(--border);
+  /* Push the hero down so the navbar doesn't overlap the photo */
+  padding-top: 100px;
+  padding-bottom: 80px;
+  /* Add extra breathing room above the about section */
+  overflow: hidden;
+}
+
+/* Subtle decorative blob — top right */
+.s-intro::before {
+  content: '';
+  position: absolute;
+  top: -160px;
+  right: -160px;
+  width: 560px;
+  height: 560px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(244, 63, 142, 0.2) 0%, transparent 68%);
+  pointer-events: none;
+  animation: drift 15s ease-in-out infinite;
+  z-index: 0;
+}
+
+/* Subtle decorative blob — bottom left */
+.s-intro::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  left: -100px;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(167, 139, 250, 0.18) 0%, transparent 68%);
+  pointer-events: none;
+  animation: drift2 18s ease-in-out infinite;
+  z-index: 0;
+}
+
+/* "Hello, I'm" badge */
+.s-intro__content-pretitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--body);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--pink);
+  background: rgba(244, 63, 142, 0.08);
+  border: 1px solid rgba(244, 63, 142, 0.2);
+  padding: 7px 18px;
+  border-radius: 100px;
+  margin-bottom: 28px;
+}
+
+/* Dot before pretitle */
+.s-intro__content-pretitle::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--lavender);
+  flex-shrink: 0;
+}
+
+/* Headline */
+.s-intro__content-title {
+  font-family: var(--display);
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-size: clamp(38px, 6vw, 80px);
+  /* responsive, won't overflow */
+}
+
+/* The subtitle lines (B2B Growth Marketer / Mumbai) over dark background portrait */
+/* The template renders content over a dark left panel — ensure text is visible */
+.s-intro__content-title {
+  color: var(--ink);
+  /* dark ink on light left panel — good */
+}
+
+/* Gradient on name */
+.s-intro__content-title strong {
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--pink) 0%, var(--lavender) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+/* Position the text nicely in the upper half of the screen */
+.s-intro__content {
+  align-items: flex-start !important;
+  margin-top: 8vh !important;
+  /* Optically balanced in the upper third */
+  padding-top: 0 !important;
+}
+
+/* Hero fade-up animation */
+.s-intro__content-text {
+  animation: fadeUp 0.7s var(--ease) 0.1s both;
+}
+
+.s-intro__content-media {
+  top: 90px !important;
+  bottom: 80px !important;
+  /* Add space below the image */
+  border-top-left-radius: 32px !important;
+  /* give the image a clean round corner so it looks intentional */
+  border-bottom-left-radius: 32px !important;
+  /* symmetric round corner */
+  overflow: hidden;
+  animation: fadeUp 0.7s var(--ease) 0.25s both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---- Buttons -------------------------------------------- */
+.btn {
+  font-family: var(--body);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 100px;
+  padding: 15px 32px !important;
+  height: auto !important;
+  line-height: normal !important;
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Primary: rose pink */
+.btn--primary,
+.s-intro__content-btns .btn:first-child {
+  background: var(--pink);
+  color: #fff !important;
+  box-shadow: 0 4px 20px rgba(244, 63, 142, 0.35);
+  border-color: var(--pink);
+}
+
+.btn--primary:hover,
+.s-intro__content-btns .btn:first-child:hover {
+  background: #e02a7a;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(244, 63, 142, 0.42);
+}
+
+/* Stroke */
+.btn--stroke,
+.s-intro__content-btns .btn--stroke {
+  background: transparent !important;
+  color: var(--ink) !important;
+  border-color: rgba(26, 10, 20, 0.2) !important;
+  box-shadow: none;
+}
+
+.btn--stroke:hover,
+.s-intro__content-btns .btn--stroke:hover {
+  background: var(--ink) !important;
+  color: #fff !important;
+  border-color: var(--ink) !important;
+  transform: translateY(-2px);
+}
+
+/* CV download */
+.s-intro__btn-download .btn--stroke {
+  border-color: rgba(26, 10, 20, 0.25) !important;
+  color: var(--ink) !important;
+  font-size: 12px;
+}
+
+/* Social icons & Scroll down overrides to keep them inside the cropped photo frame */
+.s-intro__social {
+  bottom: calc(var(--vspace-2) + var(--vspace-1_75) + 8rem + 80px) !important;
+  right: calc(var(--gutter) + var(--vspace-1_25) + 2vw) !important;
+}
+
+.s-intro__social svg {
+  fill: var(--ink-light) !important;
+  transition: fill var(--dur);
+}
+
+.s-intro__social a:hover svg {
+  fill: var(--pink) !important;
+}
+
+.s-intro__scroll-down {
+  bottom: calc(var(--vspace-2) + 80px + 10px) !important;
+  right: calc(var(--gutter) + var(--vspace-0_75) + 2vw) !important;
+}
+
+/* Hide the vertical decorative line above the scroll button */
+.s-intro__scroll-down::before {
+  display: none !important;
+}
+
+.s-intro__scroll-down .scroll-icon {
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.s-intro__scroll-down svg {
+  fill: #fff !important;
+}
+
+/* Hide horizontal decorative line beside the CV button */
+.s-intro__btn-download .btn--stroke::before {
+  display: none !important;
+}
+
+
+/* Hero image */
+.s-intro__content-media img {
+  border-radius: var(--rad);
+  filter: brightness(0.95) saturate(1.05);
+}
+
+/* ============================================================
+   SECTION HEADER — shared by About / Works / Footer
+   ============================================================ */
+.section-header {
+  border-top: none;
+  padding-top: 0;
+  margin-bottom: 48px;
+}
+
+/* Numbered pill — REMOVED */
+.section-header::before {
+  display: none !important;
+}
+
+
+.section-header h2.text-display-title {
+  font-family: var(--display);
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+  font-size: clamp(32px, 5vw, 64px);
+}
+
+/* Light-on-dark (footer) */
+.section-header.light-on-dark::before {
+  color: var(--pink-soft);
+  background: rgba(251, 164, 199, 0.12);
+  border-color: rgba(251, 164, 199, 0.25);
+}
+
+.section-header.light-on-dark h2.text-display-title {
+  color: #fff;
+}
+
+/* ============================================================
+   ABOUT
+   ============================================================ */
+.s-about {
+  background: var(--paper); /* 2nd thing: White */
+  padding-top: 100px;
+  padding-bottom: 100px;
+  border-top: 1px solid var(--border);
+}
+
+/* No pseudo-element divider here */
+.s-about::before {
+  display: none;
+}
+
+p.attention-getter {
+  font-family: var(--body);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.78;
+  color: var(--ink-light);
+  max-width: 680px;
+  margin-bottom: 24px;
+}
+
+/* ============================================================
+   ABOUT BLOCKS — Card layout, not a table
+   ============================================================ */
+
+.s-about__blocks {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 20px !important;
+  margin-top: 48px;
+}
+
+.s-about__block {
+  flex: 1 1 260px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px 28px 24px !important;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--dur) var(--ease);
+}
+
+.s-about__block:hover {
+  background: #fff;
+  border-color: var(--pink-soft);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-5px);
+}
+
+/* Card top border per section */
+.s-about__block:nth-child(1) {
+  border-top: 3px solid var(--pink);
+}
+
+.s-about__block:nth-child(2) {
+  border-top: 3px solid var(--lavender);
+}
+
+.s-about__block:nth-child(3) {
+  border-top: 3px solid var(--peach);
+}
+
+/* Kill the template's vertical bar marker — we use card top borders instead */
+.s-about__blocks .s-about__block-title {
+  padding-left: 0 !important;
+  position: static !important;
+}
+
+.s-about__blocks .s-about__block-title::before {
+  display: none !important;
+}
+
+/* Block title colors per card */
+.s-about__block:nth-child(2) .s-about__block-title {
+  color: var(--lavender);
+}
+
+.s-about__block:nth-child(3) .s-about__block-title {
+  color: var(--peach);
+}
+
+/* List items */
+.s-about__list li {
+  font-family: var(--body);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.s-about__list li:last-child {
+  border-bottom: none;
+}
+
+.s-about__list li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--pink);
+}
+
+.s-about__block:nth-child(1) .s-about__list li::before {
+  background: var(--pink);
+}
+
+.s-about__block:nth-child(2) .s-about__list li::before {
+  background: var(--lavender);
+}
+
+.s-about__block:nth-child(3) .s-about__list li::before {
+  display: none;
+}
+
+.s-about__list li span {
+  margin-left: auto;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-light);
+  opacity: 0.7;
+}
+
+/* Skills chip cloud */
+.s-about__list.chip-list {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+}
+
+.s-about__list.chip-list li {
+  border-bottom: none !important;
+  padding: 7px 14px !important;
+  border-radius: 100px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: #C2185B !important;
+  background: rgba(252, 186, 213, 0.25) !important;
+  border: 1.5px solid rgba(244, 63, 142, 0.20) !important;
+  transition: background var(--dur), transform var(--dur) !important;
+}
+
+.s-about__list.chip-list li:hover {
+  background: rgba(244, 63, 142, 0.18) !important;
+  transform: translateY(-1px) !important;
+}
+
+.s-about__list.chip-list li::before {
+  display: none !important;
+}
+
+@media (max-width: 900px) {
+  .s-about__blocks {
+    flex-direction: column !important;
+  }
+
+  .s-about__block {
+    flex: none !important;
+    width: 100% !important;
+  }
+}
+
+
+/* ============================================================
+   WORKS
+   ============================================================ */
+.s-works {
+  background: var(--paper-2); /* 3rd thing: Blush Pink */
+  padding-top: 100px;
+  padding-bottom: 100px;
+  border-top: 1px solid var(--border);
+}
+
+/* No pseudo-element divider */
+.s-works::before {
+  display: none;
+}
+
+/* Portfolio cards */
+.entry {
+  padding: 14px !important;
+}
+
+.entry__link {
+  display: block;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--dur) var(--ease);
+  text-decoration: none;
+}
+
+.entry__link:hover {
+  transform: translateY(-5px);
+  background: #fff;
+  box-shadow: var(--shadow-md);
+  border-color: var(--pink-soft);
+}
+
+.entry__thumb {
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+
+.entry__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.55s var(--ease);
+}
+
+.entry__link:hover .entry__thumb img {
+  transform: scale(1.05);
+}
+
+.entry__info {
+  padding: 18px 20px 22px;
+}
+
+.entry__title {
+  font-family: var(--body);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+/* Category pill */
+.entry__cat {
+  display: inline-block;
+  font-family: var(--body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 100px;
+  background: rgba(244, 63, 142, 0.09);
+  color: var(--pink);
+}
+
+.entry:nth-child(2) .entry__cat {
+  background: rgba(167, 139, 250, 0.10);
+  color: #7C3AED;
+}
+
+.entry:nth-child(3) .entry__cat {
+  background: rgba(251, 146, 60, 0.10);
+  color: #C2410C;
+}
+
+.entry:nth-child(4) .entry__cat {
+  background: rgba(251, 164, 199, 0.15);
+  color: #BE185D;
+}
+
+.entry:nth-child(5) .entry__cat {
+  background: rgba(52, 211, 153, 0.10);
+  color: #065F46;
+}
+
+/* ============================================================
+   NUMBERS / IMPACT STATS
+   ============================================================ */
+.s-numbers {
+  background: var(--paper); /* 4th thing: White */
+  padding-top: 100px;
+  padding-bottom: 100px;
+  border-top: 1px solid var(--border);
+}
+
+/* Remove any pseudo-elements inherited from template */
+.s-numbers::before,
+.s-numbers::after {
+  display: none;
+}
+
+/* Fix the counter row — horizontal grid */
+.counter-items {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  width: min(92%, 1280px);
+  margin: 0 auto;
+}
+
+.counter-items__item {
+  flex: 1 1 200px;
+  max-width: 260px;
+  text-align: center;
+  padding: 40px 24px;
+  border-radius: 20px;
+  background: var(--paper-2); /* Slight tint for cards on white bg */
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--dur) var(--ease);
+}
+
+.counter-items__item:hover {
+  background: #fff;
+  box-shadow: var(--shadow-md);
+  transform: translateY(-5px);
+}
+
+/* Stat number */
+.counter-items__item .num {
+  font-family: var(--display);
+  font-size: 52px;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 14px;
+  color: var(--pink-soft);
+  -webkit-text-fill-color: unset;
+  background: none;
+  background-clip: unset;
+}
+
+/* Stat number colors per item */
+.counter-items__item:nth-child(2) .num {
+  color: var(--lavender);
+}
+
+.counter-items__item:nth-child(3) .num {
+  color: var(--peach);
+}
+
+.counter-items__item:nth-child(4) .num {
+  color: #F9A8D4;
+}
+
+.counter-items__item .num span {
+  font-size: 28px;
+  font-weight: 700;
+  -webkit-text-fill-color: unset;
+  background: none;
+}
+
+.counter-items__item h5 {
+  font-family: var(--body);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+
+.counter-items__item p {
+  font-family: var(--body);
+  font-size: 13px;
+  color: var(--ink-light);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.s-footer {
+  background: var(--plum); /* 5th thing: Purple */
+  border-top: none;
+}
+
+.s-footer h5 {
+  font-family: var(--body);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 16px;
+}
+
+p.attention-getter+p,
+.s-footer .attention-getter {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 16px;
+}
+
+.s-footer .link-list li {
+  margin-bottom: 6px;
+}
+
+.s-footer .link-list li a {
+  font-family: var(--body);
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  transition: color var(--dur);
+}
+
+.s-footer .link-list li a:hover {
+  color: var(--pink-soft);
+}
+
+/* Footer buttons */
+.s-footer .btn--primary {
+  background: var(--pink) !important;
+  border-color: var(--pink) !important;
+  color: #fff !important;
+  box-shadow: 0 4px 20px rgba(244, 63, 142, 0.4);
+}
+
+.s-footer .btn--primary:hover {
+  background: #e02a7a !important;
+}
+
+.s-footer .btn--stroke {
+  background: transparent !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.s-footer .btn--stroke:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  color: #fff !important;
+  transform: translateY(-2px);
+}
+
+/* Social icons */
+.s-footer__social svg {
+  fill: rgba(255, 255, 255, 0.35) !important;
+  transition: fill var(--dur);
+}
+
+.s-footer__social a:hover svg {
+  fill: var(--pink-soft) !important;
+}
+
+.s-intro__social svg {
+  fill: var(--ink-light) !important;
+}
+
+/* Copyright */
+.ss-copyright span {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.ss-copyright a {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.ss-copyright a:hover {
+  color: var(--pink-soft);
+}
+
+/* Go-top button */
+.ss-go-top a {
+  background: var(--pink);
+  border-radius: 50%;
+  box-shadow: 0 4px 20px rgba(244, 63, 142, 0.5);
+}
+
+.ss-go-top a svg {
+  fill: #fff !important;
+}
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--display);
+  color: var(--ink);
+}
+
+/* Force dark titles for all light sections */
+.s-intro .text-display-title,
+.s-about .text-display-title,
+.s-works .text-display-title,
+.s-numbers .text-display-title {
+  color: var(--ink) !important;
+}
+
+/* Eliminate rainbow dividers that were added before */
+.s-about::before,
+.s-works::before {
+  display: none !important;
+}
+
+/* 5-Column Single Row Layout for Selected Works (Desktop Only) */
+@media screen and (min-width: 1000px) {
+  .folio-entries {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 20px;
+  }
+
+  .folio-entries .column.entry {
+    flex: 1 1 20% !important;
+    max-width: 20% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 800px) {
+  .s-intro__content-title {
+    font-size: clamp(32px, 8vw, 56px);
+  }
+
+  .counter-items {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .counter-items__item {
+    max-width: 100%;
+    width: 100%;
+    flex: none;
+  }
+}
