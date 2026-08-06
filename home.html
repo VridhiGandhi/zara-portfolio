@@ -6196,10 +6196,13 @@ a.logo {
 .s-header__menu-links {
   display: flex !important;
   align-items: center !important;
-  gap: 4px !important;
+  gap: 2px !important;
   list-style: none !important;
   margin: 0 !important;
-  padding: 0 !important;
+  padding: 6px !important;
+  background: rgba(26, 10, 20, 0.03) !important;
+  border: 1px solid rgba(244, 166, 198, 0.1) !important;
+  border-radius: 999px !important;
 }
 
 .s-header__menu-links a {
@@ -6210,27 +6213,45 @@ a.logo {
   text-transform: none !important;
   color: var(--ink-light) !important;
   text-decoration: none !important;
-  padding: 8px 14px !important;
-  border-radius: 8px !important;
+  padding: 9px 18px !important;
+  border-radius: 999px !important;
   border: none !important;
-  transition: color 0.2s, background 0.2s !important;
+  transition: color 0.25s var(--ease), background 0.25s var(--ease) !important;
   display: inline-block !important;
 }
 
 .s-header__menu-links a:hover {
   color: var(--ink) !important;
-  background: rgba(244, 166, 198, 0.06) !important;
+  background: rgba(255, 255, 255, 0.7) !important;
 }
 
-/* Active state — rose color + bold */
+/* Active state — solid pill, rose gradient */
 .s-header__menu-links li.current a {
-  color: var(--pink-text) !important;
-  font-weight: 700 !important;
-  background: transparent !important;
-  border: none !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+  background: linear-gradient(135deg, #F43F8E, #A78BFA) !important;
+  box-shadow: 0 2px 10px rgba(244, 63, 142, 0.25) !important;
+}
+
+.s-header__menu-links li.current a:hover {
+  color: #fff !important;
+  background: linear-gradient(135deg, #F43F8E, #A78BFA) !important;
 }
 
 /* Mobile toggle */
+.s-header__menu-toggle {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  background: rgba(26, 10, 20, 0.04) !important;
+  border: 1px solid rgba(244, 166, 198, 0.12) !important;
+  transition: background 0.2s var(--ease) !important;
+}
+
+.s-header__menu-toggle:hover {
+  background: rgba(244, 166, 198, 0.1) !important;
+}
+
 .s-header__menu-toggle span {
   background-color: var(--ink) !important;
 }
@@ -6239,6 +6260,24 @@ a.logo {
 @media (max-width: 700px) {
   .s-header__inner {
     padding: 16px 0 !important;
+  }
+
+  .s-header__menu-toggle {
+    display: block !important;
+  }
+
+  .s-header__menu-links {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+  }
+
+  .s-header__menu-links a {
+    width: 100%;
+    padding: 10px 16px !important;
   }
 }
 
@@ -7210,61 +7249,6 @@ h6 {
     ================================================== -->
     <style>
 
-    /* ---------- Dark mode toggle ---------- */
-    .theme-toggle{
-        position:relative;
-        display:inline-flex;
-        align-items:center;
-        justify-content:center;
-        width:40px;
-        height:40px;
-        margin-left:16px;
-        border-radius:50%;
-        border:1px solid var(--color-gray-11);
-        background:transparent;
-        cursor:pointer;
-        transition:background .3s ease, border-color .3s ease, transform .2s ease;
-        flex-shrink:0;
-    }
-    .theme-toggle:hover{ transform:rotate(15deg); border-color: var(--color-1); }
-    .theme-toggle svg{ width:18px; height:18px; display:block; }
-    .theme-toggle .icon-moon{ display:none; }
-    html[data-theme="dark"] .theme-toggle .icon-sun{ display:none; }
-    html[data-theme="dark"] .theme-toggle .icon-moon{ display:block; }
-
-    html[data-theme="dark"]{
-        --color-text: #f2f3f2;
-        --color-text-dark: #f7f8f7;
-        --color-text-light: #bdbebd;
-    }
-    html[data-theme="dark"] body,
-    html[data-theme="dark"] .s-pagewrap{
-        background-color:#111111;
-        color:var(--color-text);
-    }
-    html[data-theme="dark"] .s-header{
-        background-color:rgba(17,17,17,.9);
-    }
-    html[data-theme="dark"] .s-header__logo img{ filter: invert(1) hue-rotate(180deg); }
-    html[data-theme="dark"] .s-about,
-    html[data-theme="dark"] .s-works,
-    html[data-theme="dark"] .s-intro{
-        background-color:#111111;
-    }
-    html[data-theme="dark"] .s-about__block,
-    html[data-theme="dark"] .grid-list-items__item{
-        background-color:#1a1a1a;
-        border-color:#2a2a2a;
-    }
-    html[data-theme="dark"] .counter-items__item .num{
-        color:var(--color-1-lighter);
-    }
-    html[data-theme="dark"] a{ color:var(--color-1-lighter); }
-    html[data-theme="dark"] .btn--stroke{
-        border-color:var(--color-gray-13);
-        color:var(--color-text);
-    }
-
     /* ---------- Staggered intro reveal ---------- */
     .s-intro__content-pretitle,
     .s-intro__content-btns,
@@ -7432,10 +7416,6 @@ h6 {
                         </a>
                     </div>
 
-                    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-                        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-                        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-                    </button>
                     <a class="s-header__menu-toggle" href="#0"><span>Menu</span></a>
                 </div> <!-- end s-header__block -->
 
@@ -8278,31 +8258,7 @@ Prism.languages.javascript=Prism.languages.extend("clike",{"class-name":[Prism.l
     (function(){
 
         /* ---------------------------------------------------
-         * 1) DARK MODE TOGGLE
-         * ------------------------------------------------- */
-        (function initTheme(){
-            var root = document.documentElement;
-            var toggle = document.getElementById('theme-toggle');
-            var saved = null;
-            try { saved = localStorage.getItem('zs-theme'); } catch(e) {}
-            if (saved === 'dark') root.setAttribute('data-theme', 'dark');
-
-            if (toggle) {
-                toggle.addEventListener('click', function(){
-                    var isDark = root.getAttribute('data-theme') === 'dark';
-                    if (isDark) {
-                        root.removeAttribute('data-theme');
-                        try { localStorage.setItem('zs-theme', 'light'); } catch(e) {}
-                    } else {
-                        root.setAttribute('data-theme', 'dark');
-                        try { localStorage.setItem('zs-theme', 'dark'); } catch(e) {}
-                    }
-                });
-            }
-        })();
-
-        /* ---------------------------------------------------
-         * 2) WORD-BY-WORD STAGGER FOR INTRO HEADLINE
+         * 1) WORD-BY-WORD STAGGER FOR INTRO HEADLINE
          * ------------------------------------------------- */
         (function wordStagger(){
             var title = document.querySelector('.s-intro__content-title');
@@ -8356,7 +8312,7 @@ Prism.languages.javascript=Prism.languages.extend("clike",{"class-name":[Prism.l
         })();
 
         /* ---------------------------------------------------
-         * 3) NUMBER COUNT-UP ON SCROLL (numbers section)
+         * 2) NUMBER COUNT-UP ON SCROLL (numbers section)
          * ------------------------------------------------- */
         (function countUp(){
             var items = document.querySelectorAll('.s-numbers .counter-items__item');
@@ -8412,7 +8368,7 @@ Prism.languages.javascript=Prism.languages.extend("clike",{"class-name":[Prism.l
         })();
 
         /* ---------------------------------------------------
-         * 4) MAGNETIC / TILT HOVER ON WORK CARDS
+         * 3) MAGNETIC / TILT HOVER ON WORK CARDS
          * ------------------------------------------------- */
         (function magneticCards(){
             var thumbs = document.querySelectorAll('.folio-entries .entry .entry__thumb');
@@ -8442,7 +8398,7 @@ Prism.languages.javascript=Prism.languages.extend("clike",{"class-name":[Prism.l
         })();
 
         /* ---------------------------------------------------
-         * 5) ABOUT SECTION TEXT-REVEAL (mask slide-up)
+         * 4) ABOUT SECTION TEXT-REVEAL (mask slide-up)
          * ------------------------------------------------- */
         (function textReveal(){
             var paras = document.querySelectorAll('.s-about .attention-getter');
